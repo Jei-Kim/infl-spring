@@ -1,4 +1,4 @@
-package com.hello.core.order;
+ package com.hello.core.order;
 
 import com.hello.core.discount.DiscountPolicy;
 import com.hello.core.member.Member;
@@ -29,4 +29,10 @@ public class OrderServiceImpl implements OrderService {
 		int discountPrice = discountPolicy.discount(member, itemPrice);
 		return new Order(memberId, itemName, itemPrice, discountPrice);
 	}
+	
+	//테스트
+	public MemberRepository getMemberRepository() {
+		return memberRepository;
+	}
+	
 }
