@@ -1,9 +1,13 @@
  package com.hello.core.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.hello.core.discount.DiscountPolicy;
 import com.hello.core.member.Member;
 import com.hello.core.member.MemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 	
 /* AppConfig 이전 코드 
@@ -16,7 +20,8 @@ public class OrderServiceImpl implements OrderService {
 	private final MemberRepository memberRepository;
 	private final DiscountPolicy discountPolicy;
 	
-	//생성자 
+	
+	@Autowired //생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
 	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
 		this.memberRepository = memberRepository;
 		this.discountPolicy = discountPolicy;
