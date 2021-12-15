@@ -1032,7 +1032,10 @@ c.f. 스프링의 기본 빈 등록 방식은 싱글톤이지만, 싱글톤 방�
 
 - 프록시 방식으로 해결
     - MyLogger @Scope 애노테이션에 proxyMode = ScopedProxyMode.TARGET_CLASS  추가
+        - 이렇게 하면 MyLogger의 가짜 프록시 클래스를 만들어두고 HTTP request와 상관 없이 가짜 프록시 클래스를 다른 빈에 미리 주입해 둘 수 있음
+
     - 나머지 코드를 Provider 사용 이전으로 돌리기
+    
 - -> 결과: 정상 동작
 
 * 웹 스코프와 프록시 동작 원리
