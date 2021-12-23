@@ -205,6 +205,7 @@
     - 스프링 MVC와 강력한 기능 통합
     - 최선의 선택, 단 성능은 프리마커, 벨로시티가 더 빠름
 
+
 # SECTION 02. 서블릿
 
 ## 프로젝트 생성
@@ -323,6 +324,7 @@
 - HTTP 응답으로 JSON을 반환할 때는 content-type을 application/json 로 지정해야 한다. 
 - Jackson 라이브러리가 제공하는 objectMapper.writeValueAsString() 를 사용하면 객체를 JSON 문자로 변경할 수 있다.
     -  application/json 은 스펙상 utf-8 형식을 사용하도록 정의되어 있다. 그래서 스펙에서 charset=utf-8과 같은 추가 파라미터를 지원하지 않음.
+
 
 
 # SECTION 03. 서블릿, JSP, MVC 패턴
@@ -746,6 +748,8 @@
 
 * v4: 단순하고 실용적인 컨트롤러 v3와 거의 비슷
     - 구현 입장에서 ModelView를 직접 생성해서 반환하지 않도록 편리한 인터페이스 제공
-    
+
 * v5: 유연한 컨트롤러 어댑터 도입
     - 어댑터를 추가해서 프레임워크를 유연하고 확장성 있게 설계
+
+# SECTION 05. 
