@@ -934,8 +934,55 @@ String viewName = mv.getViewName();
 
 - 지금까지 만들었던 프레임워크에서 사용했던 컨트롤러를 @RequestMapping 기반의 스프링 MVC 컨트롤러 변경해보자.
 
+* SpringMemberFormControllerV1 - 회원 등록 폼
+
+ - @Controller
+    - 스프링이 자동으로 스프링 빈으로 등록한다. (내부에 @Component 애노테이션이 있어서 컴포넌트 스캔의 대상이 됨)
+    - 스프링 MVC에서 애노테이션 기반 컨트롤러로 인식한다.
+
+ - @RequestMapping 
+    - 요청 정보를 매핑한다. 해당 URL이 호출되면 이 메서드가 호출된다. 
+    - 애노테이션을 기반으로 동작하기 때문에, 메서드의 이름은 임의로 지으면 된다.
+
+ - ModelAndView 
+    - 모델과 뷰 정보를 담아서 반환하면 된다.
+
+* SpringMemberSaveControllerV1 - 회원 저장
+    
+    - mv.addObject("member", member)
+        - 스프링이 제공하는 ModelAndView 를 통해 Model 데이터를 추가할 때는 addObject() 를 사용하면 된다. 이 데이터는 이후 뷰를 렌더링 할 때 사용된다.
+
+* SpringMemberListControllerV1 - 회원 목록
+
+
+
 ## 스프링 MVC - 컨트롤러 통합
+
+- @RequestMapping 을 잘 보면 클래스 단위가 아니라 메서드 단위에 적용된 것을 확인할 수 있다. 따라서 컨트롤러 클래스를 유연하게 하나로 통합할 수 있다.
+    - SpringMemberControllerV2
+
+- 컨트롤러 클래스를 통합하는 것을 넘어서 조합도 가능하다.
+    - 클래스 레벨에 다음과 같이 @RequestMapping 을 두면 메서드 레벨과 조합이 된다.
+    - ex. 클래스 레벨 @RequestMapping("/springmvc/v2/members") + 메서드 레벨 @RequestMapping("/new-form") == /springmvc/v2/members/new-form
 
 ## 스프링 MVC - 실용적인 방식
 
-## 정리
+- 실무에서는 주로 이 방법 사용
+
+- SpringMemberControllerV3 생성
+
+    * Model 파라미터
+        - save() , members() 를 보면 Model을 파라미터로 받는 것을 확인할 수 있다. 스프링 MVC도 이런 편의 기능을 제공한다.
+    
+    * ViewName 직접 반환
+        - 뷰의 논리 이름을 반환할 수 있다.
+
+    * @RequestParam 사용
+        - 스프링은 HTTP 요청 파라미터를 @RequestParam 으로 받을 수 있다. @RequestParam("username") 은 request.getParameter("username") 와 거의 같은 코드라 생각하면 된다. 물론 GET 쿼리 파라미터, POST Form 방식을 모두 지원한다.
+
+    * @RequestMapping --> @GetMapping, @PostMapping
+        - @RequestMapping 은 URL만 매칭하는 것이 아니라, HTTP Method도 함께 구분할 수 있다.
+            - @RequestMapping(value = "/new-form", method = RequestMethod.GET)
+                == @GetMapping("/new-form")
+
+
