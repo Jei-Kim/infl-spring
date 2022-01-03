@@ -24,9 +24,9 @@ public class BasicItemController {
 	private final ItemRepository itemRepository;
 
 	// 롬복 에러때문에 추가
-	public BasicItemController(ItemRepository itemRepository) {
-		this.itemRepository = itemRepository;
-	}
+//	public BasicItemController(ItemRepository itemRepository) {
+//		this.itemRepository = itemRepository;
+//	}
 
 	@GetMapping
 	public String items(Model model) {
