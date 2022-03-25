@@ -10,13 +10,12 @@ public class Item {
 	private Integer price; //값이 들어가지 않는 경우 대비 -> int 대신 Integer 사용 
 	private Integer quantity;
 	
-	
 	 public Item() {
      }
 
 	 public Item(String itemName, Integer price, Integer quantity) {
-         this.itemName = itemName;
-         this.price = price;
+        this.itemName = itemName;
+        this.price = price;
         this.quantity = quantity;
     }
 
